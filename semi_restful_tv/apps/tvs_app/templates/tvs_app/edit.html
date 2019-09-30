@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>new</title>
+</head>
+<body>
+        <h1>Edit a Show {{show.id}}</h1>
+        <form action='/new/{{show.id}}' method='post'>
+            {% csrf_token %}
+            Title:
+            <p><input type='text' name='title'></p>
+            Network:
+            <p><input type='text' name='network'></p>
+            Release Date:
+            <p><input type='date' name='release'></p>
+            Description:
+            <p><input type='text' name='desc'></p>
+            <button type='submit'>Update</button>
+        </form>
+</body>
+</html>
