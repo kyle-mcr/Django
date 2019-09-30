@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Registration/Login</title>
+    <style>
+        .container {
+            width: 1070px;
+            height: 800px;
+        }
+
+        .left {
+            width: 450px;
+            display: inline-block;
+
+        }
+
+        .right {
+            width: 450px;
+            display: inline-block;
+            margin-left: 100px;
+            vertical-align: top;
+        }
+        #button{
+            color: white;
+            border-radius: 8px;
+            background-color:rgb(0, 179, 24);
+            box-shadow: 3px 3px 4px rgba(0,0,0,0.7);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <h1>Registration:</h1>
+            {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="/register" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="formGroupExampleInput">First Name </label>
+                    <input type="text" class="form-control" name="first_name" id="formGroupExampleInput" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Last Name</label>
+                    <input type="text" class="form-control" name="last_name" id="formGroupExampleInput2" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Email</label>
+                    <input type="text" class="form-control"  name="email" id="formGroupExampleInput2" placeholder="email@address.com">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Password</label>
+                    <input type="password" class="form-control"  name="password" id="formGroupExampleInput2" placeholder="Must contain at least six characters">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Confirm Password</label>
+                    <input type="password" class="form-control" name="confirm" id="formGroupExampleInput2" placeholder="Confirm Password">
+                </div>
+                <input id="button" type="submit" value="Create">
+            </form>
+        </div>
+        <div class="right">
+            <h1>Log In:</h1>
+            <form action="/login" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Email</label>
+                    <input type="text" class="form-control" name="email" id="formGroupExampleInput" placeholder="email@address.com">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Password</label>
+                    <input type="password" class="form-control" name="password" id="formGroupExampleInput2" placeholder="Password">
+                </div>
+                <input id="button" type="submit" value="Login">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
