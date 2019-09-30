@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Wall</title>
+    <style>
+        .header {
+            vertical-align: top;
+            padding-top: 15px;
+            border-bottom: 2px solid black;
+            display: inline-block;
+        }
+
+        .header h1 {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .logout {
+            margin-left: 1040px;
+            display: inline-block;
+            text-decoration: underline;
+        }
+
+        .left {
+            margin-top:25px;
+            width: 400px;
+            display: inline-block;
+            vertical-align: top;
+            border: 1px black solid;
+        }
+
+        .right {
+            margin-left:300px;
+            margin-top:25px;
+            width: 400px;
+            display: inline-block;
+            vertical-align: top;
+            border: 1px black solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/clear" class="logout">Logout</a>
+            <h1>Welcome, {{user.first_name}}!</h1>
+        </div>
+        <div class="left">
+            <h3>Add a Favorite Book</h3>
+            <form action="/add" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Title </label>
+                    <input type="text" class="form-control" name="title" id="formGroupExampleInput"
+                        placeholder="Title">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Description</label>
+                    <input type="text" class="form-control" name="description" id="formGroupExampleInput2"
+                        placeholder="Deescription">
+                </div>
+        <input id="button" type="submit" value="Create">
+        </form>
+    </div>
+    <div class="right">
+        <h1>All Books:</h1>
+            {%for book in books%}
+            <p>{{book.title}}</p>
+            <p>(added by {{book.uploaded_by.first_name}})</p>
+            <p>what is this kyle??????</p>
+            {%endfor%}
+    </div>
+    </div>
+</body>
+
+</html>

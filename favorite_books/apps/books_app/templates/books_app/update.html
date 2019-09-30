@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Wall</title>
+    <style>
+        .header {
+            vertical-align: top;
+            padding-top: 15px;
+            border-bottom: 2px solid black;
+            display: inline-block;
+        }
+        .header h1 {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .logout {
+            margin-left: 1040px;
+            display: inline-block;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/clear" class="logout">Logout</a>
+            <h1>Welcome, {{user.first_name}}!</h1>
+        </div>
+    </div>
+</body>
+</html>
