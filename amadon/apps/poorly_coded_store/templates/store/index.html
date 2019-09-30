@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Amadon</title>
+</head>
+<body>
+    <h1>Amadon Store!</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Item</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in all_products %}
+            <tr>
+                <form action="/place_order" method="post">
+                    {% csrf_token %}
+                    <td>{{product.description}}</td>
+                    <td><input type="hidden" name="product" value="{{product.id}}">{{product.price}}</td>
+                    <td><select name="quantity">
+                        <option value="1">1</option>              
+                        <option value="2">2</option>              
+                        <option value="3">3</option>              
+                    </select></td>
+                    <td><input type="submit" value="Buy!"></td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+
+<!--quantity_from_form = int(request.POST["quantity"])
+price_from_form = float(request.POST["price"])
+total_charge = quantity_from_form * price_from_form
+print("Charging credit card...")
+Order.objects.create(quantity_ordered=quantity_from_form, total_price=total_charge)-->
